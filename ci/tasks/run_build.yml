@@ -12,7 +12,7 @@ inputs:
 
 run:
  dir: resource-carts
- path: nvm
+ path: mvn
  args:
  - -DskipTests
  - package
