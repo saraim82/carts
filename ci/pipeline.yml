@@ -15,19 +15,10 @@ jobs:
     file: resource-carts/ci/tasks/run_build.yml
 
 
-#- name: job-test
-#  public: true
-#  plan:
-#  - get: resource-carts
-#  - get: resource-git
-#  - task: test
-#    config:
-#      platform: linux
-#      image_resource:
-#        type: docker-image
-#        source: {repository: ubuntu, tag: latest}
-#      inputs:
-#      - name: resource-carts
-#      - name: resource-git
-#      run:
-#        path:  resource-git/./scripts/run_test.sh
+- name: job-test
+  public: true
+  plan:
+  - get: resource-carts
+    passed: [job-build]
+  - task: run test
+    file: resource-carts/ci/tasks/run_test.yml
