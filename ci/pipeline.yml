@@ -11,6 +11,7 @@ jobs:
   public: true
   plan:
   - get: resource-carts
+    trigger: true
   - task: run build
     file: resource-carts/ci/tasks/run_build.yml
 
