@@ -20,6 +20,7 @@ jobs:
   public: true
   plan:
   - get: resource-carts
+    trigger: true
     passed: [job-build]
   - task: run test
     file: resource-carts/ci/tasks/run_test.yml
