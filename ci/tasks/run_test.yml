@@ -4,13 +4,15 @@ platform: linux
 image_resource:
  type: docker-image
  source:
-  repository: python
-  tag: latest
+  repository: maven
+  tag: 3.2-jdk-8
 
 inputs:
 - name: resource-carts
 
 run: 
- path: resource-carts/ci/scripts/run_test.sh 
+ dir: resource-carts
+ path: mvn
  args: 
- - unit.py
+ - -q 
+ - test
