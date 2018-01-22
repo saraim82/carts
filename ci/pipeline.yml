@@ -15,7 +15,6 @@ jobs:
   - task: run build
     file: resource-carts/ci/tasks/run_build.yml
 
-
 - name: job-test
   public: true
   plan:
