@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-set -ev
-
-apk update && apk add bash
+set -e -u -x
 
 SCRIPT_DIR=`dirname "$0"`
 SCRIPT_NAME=`basename "$0"`
