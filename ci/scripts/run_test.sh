@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -e -u -x
 
@@ -8,5 +8,9 @@ SSH_OPTS=-oStrictHostKeyChecking=no
 
 
 echo "Testing $1"
-echo "Testing $SCRIPT_DIR"
-echo "Testing SCRIPT_NAME"
+CODE_DIR=$(cd $SCRIPT_DIR/..; pwd)
+cp $PWD/test/$1 $PWD/ci/scripts/
+cp -R $PWD/test/util $PWD/ci/scripts/
+echo "$@"
+export PYTHONPATH=\$PYTHONPATH:\$PWD/scripts
+python ci/scripts/$@
