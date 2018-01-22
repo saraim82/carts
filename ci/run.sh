@@ -8,7 +8,7 @@ echo "Concourse API target ${fly_target}"
 echo "SVC $(basename $DIR)"
 
 pushd $DIR
-  fly -t ${fly_target} set-pipeline -p carts -c pipeline.yml -n 
+  fly -t ${fly_target} set-pipeline -p carts -c pipeline.yml -l credentials.yml -n 
   fly -t ${fly_target} unpause-pipeline -p carts
   fly -t ${fly_target} trigger-job -w -j carts/job-build
 popd

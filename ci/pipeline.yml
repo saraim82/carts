@@ -35,15 +35,3 @@ jobs:
   - put: carts-docker-image
     params:
       build: docker-build
-    
-
-# - name: publish
-#   public: true
-#   serial: true
-#   plan:
-#   - get: docker-build
-#     passed: [job-build]
-#     trigger: true
-#   - put: carts-docker-image
-#     params:
-#       build: resource-carts
