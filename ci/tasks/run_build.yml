@@ -10,9 +10,13 @@ image_resource:
 inputs:
 - name: resource-carts
 
+outputs:
+- name: docker-build
+
 run:
- dir: resource-carts
- path: mvn
+ path: bash
  args:
- - -DskipTests
- - package
+ - -exc
+ - |
+    export DOCKER_BUILD_DIR=$PWD/docker-build
+    (cd resource-carts && mvn -DskipTests package  && cp -r target Dockerfile $DOCKER_BUILD_DIR)

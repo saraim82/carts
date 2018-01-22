@@ -6,20 +6,44 @@ resources:
     uri: https://github.com/saraim82/carts.git
     branch: master
 
+- name: carts-docker-image
+  type: docker-image
+  source:
+    email: sarai_morales@ultimatesoftware.com
+    username: sarai
+    password: MyCredentialis3
+    repository: sarai/carts
+
 jobs:
-- name: job-build
-  public: true
-  plan:
-  - get: resource-carts
-    trigger: true
-  - task: run build
-    file: resource-carts/ci/tasks/run_build.yml
 
 - name: job-test
   public: true
   plan:
   - get: resource-carts
     trigger: true
-    passed: [job-build]
   - task: run test
     file: resource-carts/ci/tasks/run_test.yml
+
+- name: job-build
+  public: true
+  plan:
+  - get: resource-carts
+    passed: [job-test]
+    trigger: true
+  - task: run build
+    file: resource-carts/ci/tasks/run_build.yml
+  - put: carts-docker-image
+    params:
+      build: docker-build
+    
+
+# - name: publish
+#   public: true
+#   serial: true
+#   plan:
+#   - get: docker-build
+#     passed: [job-build]
+#     trigger: true
+#   - put: carts-docker-image
+#     params:
+#       build: resource-carts
