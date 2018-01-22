@@ -11,4 +11,5 @@ inputs:
 - name: resource-carts
 
 run: 
- path: resource-carts/ci/scripts/run_test.sh
+ path: resource-carts/ci/scripts/run_test.sh 
+ args: unit.py
