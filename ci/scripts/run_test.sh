@@ -10,5 +10,5 @@ CODE_DIR=$(cd $SCRIPT_DIR/../..; pwd)
 cp $CODE_DIR/test/$1 $CODE_DIR/ci/scripts/
 cp -R $CODE_DIR/test/util $CODE_DIR/ci/scripts/
 echo "$@"
-export PYTHONPATH=\$PYTHONPATH:\$CODE_DIR/scripts
+export PYTHONPATH=\$PYTHONPATH:\$CODE_DIR/ci/scripts
 python $CODE_DIR/ci/scripts/$@
