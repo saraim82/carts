@@ -9,9 +9,9 @@ resources:
 - name: carts-docker-image
   type: docker-image
   source:
-    email: sarai_morales@ultimatesoftware.com
-    username: sarai
-    password: MyCredentialis3
+    email: {{DOCKER_MAIL}}
+    username: {{DOCKER_USER}}
+    password: {{DOCKER_PASS}}
     repository: sarai/carts
 
 jobs:
