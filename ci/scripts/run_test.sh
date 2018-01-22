@@ -2,7 +2,7 @@
 
 set -ev
 
- apk add --no-cache bash
+apk update && apk add bash
 
 SCRIPT_DIR=`dirname "$0"`
 SCRIPT_NAME=`basename "$0"`
