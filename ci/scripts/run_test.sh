@@ -8,9 +8,9 @@ SSH_OPTS=-oStrictHostKeyChecking=no
 
 
 echo "Testing $1"
-CODE_DIR=$(cd $SCRIPT_DIR/..; pwd)
-cp $PWD/resource-carts/test/$1 $PWD/resource-carts/ci/scripts/
-cp -R $PWD/resource-carts/test/util $PWD/resource-carts/ci/scripts/
+CODE_DIR=$(pwd)
+cp $PWD/test/$1 $PWD/ci/scripts/
+cp -R $PWD/test/util $PWD/ci/scripts/
 echo "$@"
 export PYTHONPATH=\$PYTHONPATH:\$PWD/scripts
 python ci/scripts/$@
